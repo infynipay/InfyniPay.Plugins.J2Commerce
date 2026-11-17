@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="j2commerce" method="upgrade">
+    <name>J2Commerce - InfyniPay</name>
+    <author>Infynipay</author>
+    <creationDate>2026-05-23</creationDate>
+    <copyright>(C) 2024-2026 Infynipay</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>support@infynipay.io</authorEmail>
+    <authorUrl>https://www.infynipay.io</authorUrl>
+    <version>1.0.0</version>
+    <description>PLG_J2COMMERCE_PAYMENT_INFYNIPAY_XML_DESCRIPTION</description>
+
+    <namespace path="src">J2Commerce\Plugin\J2Commerce\PaymentInfynipay</namespace>
+
+    <files>
+        <filename plugin="payment_infynipay">payment_infynipay.php</filename>
+        <filename>script.php</filename>
+        <folder>src</folder>
+        <folder>services</folder>
+        <folder>tmpl</folder>
+        <folder>layouts</folder>
+        <folder>language</folder>
+        <folder>media</folder>
+        <folder>images</folder>
+    </files>
+
+    <languages>
+        <language tag="en-GB">language/en-GB/plg_j2commerce_payment_infynipay.ini</language>
+        <language tag="en-GB">language/en-GB/plg_j2commerce_payment_infynipay.sys.ini</language>
+    </languages>
+
+    <media destination="plg_j2commerce_payment_infynipay" folder="media">
+        <folder>css</folder>
+        <folder>js</folder>
+    </media>
+
+    <config>
+        <fields name="params"
+                addfieldprefix="J2Commerce\Plugin\J2Commerce\PaymentInfynipay\Field">
+
+            <fieldset name="basic" label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_FIELDSET_BASIC">
+
+                <field name="display_name"
+                       type="text"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_DISPLAY_NAME_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_DISPLAY_NAME_DESC"
+                       default="InfyniPay" />
+
+                <!-- Hidden credentials saved by the OAuth callback -->
+                <field name="license_id"             type="hidden" default="" />
+                <field name="sandbox_app_id"         type="hidden" default="" />
+                <field name="sandbox_token"          type="hidden" default="" />
+                <field name="sandbox_webhook_secret" type="hidden" default="" />
+                <field name="live_app_id"            type="hidden" default="" />
+                <field name="live_token"             type="hidden" default="" />
+                <field name="live_webhook_secret"    type="hidden" default="" />
+
+                <field name="sandbox"
+                       type="radio"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_SANDBOX_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_SANDBOX_DESC"
+                       default="1"
+                       class="btn-group btn-group-yesno"
+                       layout="joomla.form.field.radio.switcher">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="setup_button"
+                       type="Setupbutton"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_GATEWAYS_LABEL"
+                       description="" />
+
+                <field name="providers_overview"
+                       type="Providers"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_SUPPORTED_GATEWAYS_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_SUPPORTED_GATEWAYS_DESC" />
+
+                <field name="payment_status_success"
+                       type="J2storeorderstatus"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_SUCCESS_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_SUCCESS_DESC"
+                       default="1" />
+
+                <field name="payment_status_pending"
+                       type="J2storeorderstatus"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_PENDING_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_PENDING_DESC"
+                       default="4" />
+
+                <field name="payment_status_failed"
+                       type="J2storeorderstatus"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_FAILED_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_FAILED_DESC"
+                       default="3" />
+
+                <field name="payment_status_cancelled"
+                       type="J2storeorderstatus"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_CANCELLED_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_STATUS_CANCELLED_DESC"
+                       default="6" />
+
+                <!-- Refunds and disputes map to the Failed status above:
+                     J2Commerce ships no native Refunded/Disputed order status. -->
+
+                <field name="geozone_id"
+                       type="J2storegeozones"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_GEOZONE_LABEL"
+                       description="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_GEOZONE_DESC"
+                       default="0">
+                    <option value="0">JNONE</option>
+                </field>
+
+                <field name="min_subtotal"
+                       type="number"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_MIN_SUBTOTAL_LABEL"
+                       description=""
+                       default="0" />
+
+                <field name="max_subtotal"
+                       type="number"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_MAX_SUBTOTAL_LABEL"
+                       description=""
+                       default="-1" />
+
+                <field name="log_viewer"
+                       type="Logviewer"
+                       label="PLG_J2COMMERCE_PAYMENT_INFYNIPAY_LOG_LABEL"
+                       description="" />
+
+            </fieldset>
+        </fields>
+    </config>
+</extension>

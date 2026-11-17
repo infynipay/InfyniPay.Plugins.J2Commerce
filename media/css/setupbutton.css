@@ -1,0 +1,321 @@
+.ph-logo-wrap {
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.ph-logo {
+    height: 40px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Dual-logo: light variant visible by default, dark variant hidden */
+.ph-logo-dk {
+    display: none;
+}
+
+.ph-logo-lt {
+    display: block;
+}
+
+/* System dark mode */
+@media (prefers-color-scheme: dark) {
+    .ph-logo-lt { display: none; }
+    .ph-logo-dk { display: block; }
+}
+
+/* Joomla admin dark theme */
+[data-bs-theme="dark"] .ph-logo-lt,
+.joomla-color-scheme-dark .ph-logo-lt {
+    display: none;
+}
+
+[data-bs-theme="dark"] .ph-logo-dk,
+.joomla-color-scheme-dark .ph-logo-dk {
+    display: block;
+}
+
+@keyframes ph-skeleton-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.ph-card-disconnected.ph-is-loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.ph-card-disconnected.ph-is-loading > * {
+    opacity: 0;
+}
+
+.ph-card-disconnected.ph-is-loading::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background:
+        linear-gradient(#e2e8f0 0 0) 1.15rem 1rem / 148px 40px no-repeat,
+        linear-gradient(#e2e8f0 0 0) 11.2rem 1.35rem / 270px 16px no-repeat,
+        linear-gradient(#e2e8f0 0 0) 1.15rem calc(100% - 3rem) / 190px 38px no-repeat,
+        linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.72) 50%, rgba(255,255,255,0) 100%) 0 0 / 200% 100% no-repeat;
+    animation: ph-skeleton-shimmer 1.15s ease-in-out infinite;
+}
+
+[data-bs-theme="dark"] .ph-card-disconnected.ph-is-loading::before,
+.joomla-color-scheme-dark .ph-card-disconnected.ph-is-loading::before {
+    background:
+        linear-gradient(#334155 0 0) 1.15rem 1rem / 148px 40px no-repeat,
+        linear-gradient(#334155 0 0) 11.2rem 1.35rem / 270px 16px no-repeat,
+        linear-gradient(#334155 0 0) 1.15rem calc(100% - 3rem) / 190px 38px no-repeat,
+        linear-gradient(90deg, rgba(15,23,42,0) 0%, rgba(148,163,184,0.24) 50%, rgba(15,23,42,0) 100%) 0 0 / 200% 100% no-repeat;
+}
+
+.ph-card-disconnected-header {
+    background: linear-gradient(180deg, #f7f8fa 0%, #eef2f6 100%);
+    border-bottom: 1px solid #e3e8ee;
+}
+
+.ph-infynipay-control-group {
+    width: 100%;
+    max-width: 980px;
+}
+
+.ph-infynipay-setup-control-group {
+    padding-left: var(--ph-infynipay-label-offset, 220px);
+    box-sizing: border-box;
+}
+
+.ph-infynipay-control-group .controls,
+.ph-infynipay-control-group .control-field {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: 720px;
+}
+
+.ph-infynipay-control-group .card,
+.ph-infynipay-control-group .ph-providers-card {
+    width: 100%;
+    max-width: 720px;
+}
+
+/* Order-status rows — 3-column compact grid */
+.ph-status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem 1.25rem;
+    max-width: 720px;
+    padding-left: var(--ph-infynipay-label-offset, 220px);
+    box-sizing: border-box;
+    margin-bottom: 0.75rem;
+}
+
+.ph-status-row {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.ph-status-row .control-label {
+    float: none !important;
+    width: auto !important;
+    text-align: left !important;
+    padding: 0 0 0.2rem !important;
+    margin: 0;
+}
+
+.ph-status-row .control-label label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ph-status-row .controls,
+.ph-status-row .control-field {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.ph-status-row select {
+    width: 100%;
+    font-size: 0.8125rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+@media (max-width: 900px) {
+    .ph-status-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .ph-status-grid { grid-template-columns: 1fr; }
+}
+
+.ph-card-connected {
+    border: 1px solid #000;
+    box-shadow: none;
+}
+
+.ph-card-connected-header {
+    background: linear-gradient(180deg, #f4f9ff 0%, #e8f1ff 100%);
+    border-bottom: 1px solid #d4e4ff;
+}
+
+.ph-card-connected-body {
+    background: #ffffff;
+}
+
+.ph-card-connected-title {
+    color: #1d4ed8;
+}
+
+.ph-log-path {
+    margin: 0;
+    font-family: monospace;
+    font-size: 11px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.ph-card-disconnected-title {
+    color: #14213d;
+    overflow-wrap: anywhere;
+}
+
+.ph-card-disconnected-body {
+    background: #ffffff;
+}
+
+.ph-provider-light {
+    display: block;
+}
+
+.ph-provider-dark {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .ph-infynipay-setup-control-group {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .ph-gateway-apps {
+        grid-template-columns: 1fr;
+    }
+    .ph-gateway-card {
+        max-width: 100%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .ph-card-disconnected-header {
+        background: linear-gradient(180deg, #1e293b 0%, #111827 100%);
+        border-bottom-color: #334155;
+    }
+
+    .ph-card-connected {
+        border-color: #1d4ed8;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.22);
+    }
+
+    .ph-card-connected-header {
+        background: linear-gradient(180deg, #172554 0%, #1e3a8a 100%);
+        border-bottom-color: #2563eb;
+    }
+
+    .ph-card-connected-body {
+        background: #0f172a;
+    }
+
+    .ph-card-connected-title {
+        color: #dbeafe;
+    }
+
+    .ph-card-disconnected-title {
+        color: #e5e7eb;
+    }
+
+    .ph-card-disconnected-body {
+        background: #0f172a;
+    }
+
+    .ph-provider-light {
+        display: none !important;
+    }
+
+    .ph-provider-dark {
+        display: block !important;
+    }
+}
+
+[data-bs-theme="dark"] .ph-card-disconnected-header,
+.joomla-color-scheme-dark .ph-card-disconnected-header {
+    background: linear-gradient(180deg, #1e293b 0%, #111827 100%);
+    border-bottom-color: #334155;
+}
+
+[data-bs-theme="dark"] .ph-card-connected,
+.joomla-color-scheme-dark .ph-card-connected {
+    border-color: #1d4ed8;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.22);
+}
+
+[data-bs-theme="dark"] .ph-card-connected-header,
+.joomla-color-scheme-dark .ph-card-connected-header {
+    background: linear-gradient(180deg, #172554 0%, #1e3a8a 100%);
+    border-bottom-color: #2563eb;
+}
+
+[data-bs-theme="dark"] .ph-card-connected-body,
+.joomla-color-scheme-dark .ph-card-connected-body {
+    background: #0f172a;
+}
+
+[data-bs-theme="dark"] .ph-card-connected-title,
+.joomla-color-scheme-dark .ph-card-connected-title {
+    color: #dbeafe;
+}
+
+[data-bs-theme="dark"] .ph-card-disconnected-title,
+.joomla-color-scheme-dark .ph-card-disconnected-title {
+    color: #e5e7eb;
+}
+
+[data-bs-theme="dark"] .ph-card-disconnected-body,
+.joomla-color-scheme-dark .ph-card-disconnected-body {
+    background: #0f172a;
+}
+
+[data-bs-theme="dark"] .ph-provider-light,
+.joomla-color-scheme-dark .ph-provider-light {
+    display: none !important;
+}
+
+[data-bs-theme="dark"] .ph-provider-dark,
+.joomla-color-scheme-dark .ph-provider-dark {
+    display: block !important;
+}
+
+/* ── Gateway card dark mode ── */
+[data-bs-theme="dark"] .ph-gateway-card,
+.joomla-color-scheme-dark .ph-gateway-card {
+    background: #1e293b !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .ph-gateway-card { background: #1e293b !important; }
+}
